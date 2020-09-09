@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          body{
+               margin:0px;
+          }
+          #wrapper{
+               width: 800px;
+               height: 600px;
+               margin:auto;
+          }
+          #control{
+               width:200px;
+               height: 100%;
+               background:yellow;
+               float: left; 
+          }
+          #result{
+               width:600px;
+               height: 100%;
+               float: left; 
+          }
+          /*이미지에 대한 스타일 시트*/
+          #pic{
+               width:100px;
+               height:100px;
+               transform:scaleX(2);
+               transform:scaleY(2);
+               transform:rotate(45deg);
+               border:1px dotted red;
+          }
+     </style>
+     <script>
+          /*여기 영역은 html이 아닌 프로그래밍 영역임
+               이 영역이 수행되는 시점음? 브라우저 실행할때
+          */
+          var w=0; //너비를 결정짓는 변수
+          var h=0; //높이를 결정짓는 변수
+          var scX=1; //x스케일 결정짓는 변수
+          var scY=1; //y스케일 결정짓는 변수
+          var op=1; //처음엔 불투명 o.9, 0.8....0
+          var r=0; //처음엔 0도
+          var b=0; 
+
+          function setWidht(){
+                //문서내의 pic 이라는 요소의 CSS의 너비를 늘린다.
+               w=w+10; //10 증가 즉 누적시킴
+               document.getElementById("pic").style.width=w+"px";
+          }
+          function setHeight(){
+               h=h+10; //기존 h에 10누적
+               document.getElementById("pic").style.height=h+"px";
+          }
+          function setScaleX(){
+               //문서내의 pic 이라는 요소의 CSS의 scaleX의 값을 늘린다.
+               //참고로 스케일은 너비의 배수를 의미 ex) 2는 2배, 3은 3배, 05는 절반
+               scX=scX+0.5;
+               document.getElementById("pic").style.transform="scaleX("+scX+")";
+          }
+          function setScaleY(){
+               scY=scY+0.5;
+               document.getElementById("pic").style.transform="scaleY("+scY+")";
+          }
+          function setOpacity(){
+               //문서내의 pic 이라는 요소의 css중 opacity 변경한다.
+               op=op-0.1; //0.1 감소
+               document.getElementById("pic").style.opacity=op;
+          }
+          function setRotate(){
+               //문서내의 pic 이라는 요소의 css중 rotate 를 변경한다.
+               r=r+5; //5도씩 양수(시계) 방향으로 돌린다, 
+               document.getElementById("pic").style.transform="rotate("+r+"deg)";
+          }
+          function setBorder(){
+               //문서내의 pic 이라는 요소의 css중 border 를 변경한다.
+               b=b+1;
+               document.getElementById("pic").style.border=b+"px dotted red";
+          }
+     </script>
+</head>
+<body>
+     <div id="wrapper">
+          <div id="control">
+               <!-- ul 이란 un ordered list 순서없는 목록이라는 뜻 -->
+               <ul>
+                    <li>
+                         <button onClick="setWidht()">width</button>
+                         <button onclick="setHeight()">height</button>
+                    </li>
+                    <li>
+                         <button onClick="setScaleX()">scaleX</button>
+                         <button onclick="setScaleY()">scaleY</button>
+                    </li>
+                    <li>
+                    <button onClick="setOpacity()">opacity</button>
+                    </li>
+                    <li>
+                         <button onClick="setRotate()">rotate</button>
+                    </li>
+                    <li>
+                         <button onClick="setBorder()">border </button>
+                    </li>
+               </ul>
+          </div>
+          <div id="result">
+               <img src="../images/hero/image1.png" id="pic"/>
+          </div>
+     </div>
+</body>
+</html>
