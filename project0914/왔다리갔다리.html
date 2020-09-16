@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #box{
+               width:100px;
+               height:100px;
+               background-color:red;
+               position:absolute;
+               left:0px;
+               top:150px;
+               color:yellow;
+               font-size:40px;
+               font-weight: :bold;
+               text-align:center;
+          }
+     </style>
+     <script>
+          var x=0;//box의 x좌표
+          var step=5; //우측, 좌측을 결정짓는 발걸음 변수
+          //var flag=true;
+          //var box= document.getElementById("box"); // 수행오류!, 타이밍 문제, box가 생성되지 않았기 때문
+
+          //init은 내가 만든 함수명이다..
+          //body 태그안의 모든 요소가 생성된 이후에, 즉 로드된 이후에 자바스크립트에서
+          //접근해야 하므로, 초기화 함수는 onLoad 이벤트 핸들러에서 호출하도록 한다!!
+          function init(){
+               //문서 로드이후에 사용할 수 있는 것들에 대해 주로 한다.!!
+               box=document.getElementById("box");
+          }
+
+          //함수는 호출해야 동작(실행)한다!!!(호출하기 전까지는 절대로 실행하지 않는다.!)
+          //정의한 것이지 호출한것은 아니며 메모리에 로드된 상태이다
+          //.onClick(=클릭할때) 호출된다. 따라서 box가 생성된 이후에 호출되므로 타이밍문제가 
+          //발생되지 않는다.
+          function move(){
+               x=x+step; //우측방향일때는 양수5, 죄측방향일때는 음수5
+              document.getElementById("box").style.left=x+"px"; 
+              //박스안에 x값 출력
+              
+              document.getElementById("box").innerText=x;//innetText 는 <div> 와 </div>사이
+          
+               //400 이상이거나, 0 이하면 기존의 5는 부호를 바꿔야 한다.
+               //방법1)
+               //flag=(x<=0 || x>=400)? !flag : flag ;
+               //step=(flag)? 5 : -5;
+
+               //방법2)
+               step=(x<=0 || x>=400)? -step:step;
+          }
+          
+          //자동으로 움직이게 처리
+          function auto(){
+               setInterval("move()",10);
+          }
+     </script>
+</head>
+<body onLoad="init()">
+     <button onClick="move()">수동움직이기</button>
+     <button onClick="auto()">자동움직이기</button>
+     <div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          /*body 태그에는 기본적으로 margin 이 적용되어 있다..
+               따라서 body에 직접적으로 올려지는 태그는 약간 떨어져서 위치함
+          */
+          body{
+               margin:0px; /*잉여 공간을 아예 없애자!! */
+          }
+          #wrapper{
+               width:100%;
+               height:700px;
+               background:yellow;
+               position:relative;
+          }
+          #pic{
+               width:50px;
+               height:50px;
+               border:1px solid red;
+               position:absolute;
+               left:0px;
+               top:100px;
+          }
+     </style>
+     <script>
+          function getPoint(){
+               //마우스의 실시간 좌표를 텍스트박스에 출력해보자
+
+               //발생하는 이벤트에 대한 모든~~정보는 event 라는 객체가 보유하고 있다.
+               //아까 예제에서는 키보드 이벤트에 대한 아스키코드값을 가져왔었다..
+               //이번엔, 키보드가 아니라 마우스에 관한 이벤트일 뿐이다..
+               console.log("x축", event.clientX);
+               console.log("y축", event.clientY);
+
+               document.getElementById("tx").value=event.clientX;
+               document.getElementById("ty").value=event.clientY;
+
+               //조사된 마우스 위치 정보를 구했으니, 이 정보를 이미지에 적용해버리자.
+               //그렇게 하면 이미지의 좌표와 마우스의 좌표가 일치하게 되어, 따라다니는 
+               //효과가 나게 된다..
+               //event.clientX=event.clientX-25; --?
+               //event.clientY=event.clientY-25; --?
+
+               document.getElementById("pic").style.left=event.clientX-25+"px";
+               document.getElementById("pic").style.top=event.clientY-25+"px";
+
+               //프로그래밍적으로 스타일 시트의 속성에 접근하는 방법
+               //var x=document.getElementBYId(''wrapper").style.width; //단 px가 따라오기
+               //때문에 날려 버려야 한다 
+
+          }
+     </script>
+</head>
+<!-- onMouseMove : 마우스를 움직이는 동안 발생하는 이벤트를 처리하는 핸들러(on은 뭐뭐할때인다.) -->
+<body onMouseMove="getPoint()">
+     <div id="wrapper">
+          마우스 x좌표 : <input type="text" id="tx"/>
+          마우스 y좌표 : <input type="text" id="ty"/>
+
+          <img src="../images/hero/image1.png" id="pic" onclick="alert('아야아')"/>
+
+     </div>
+</html>
