@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          body{
+               background: black;
+          }
+          #wrapper{
+               width: 400px;
+               height: 75px;
+               background: white;
+               margin: auto;
+               position: relative;
+               /*overflow: hidden;*/
+          }
+     </style>
+     <script>
+          var arr=new Array(5); //반복문으로 채워넣기 위함
+
+          function init(){
+               //이미지 5개를 동적으로 생성하여 wrapper 추가!!
+               for(var i=0;i<5;i++){
+                    var div=document.createElement("div"); //
+                    arr[i]=div;//arr[0] =좌표0인 div, arr[1]=좌표 200인 div가 들어간다...
+                    //div.src="../images/travel/"+(i+1)+".jpg"; //
+                    div.style.width=100+"px";
+                    div.style.height=75+"px";
+                    div.style.position="absolute";
+                    div.style.left=i*100+"px";
+                    div.style.border="5px solid red";
+                    div.style.boxSizing="border-box";
+
+                    //현재 자신의 좌표
+                    div.innerText= div.style.left;
+     
+                    //wrapper 에 부착
+                    var wrapper=document.getElementById("wrapper");
+                    wrapper.appendChild(div);
+               }
+
+
+          }
+          //이미지들의 좌표를 좌측방향으로 (x음수) 이동하다가,
+          //-100에 도달하는 녀석은 400에 재생의 기회를 준다.
+          function move(){
+               //지역변수로 되어 있기 때문에 첫번째 이미지 조차 가져올 수 없다.
+               //결론 : 모든 이미지에 대해 반복문으로 움직이기 위해 배열로 담아둔것임!!
+               for(var i=0;i<arr.length;i++){
+                    arr[i].style.left=parseInt(arr[i].style.left)-10+"px";
+               }
+               
+               var n=parseInt(div.style.left);
+               if(n=-100){
+                    div.style.left=400+"px";
+               }
+          }
+          
+          window.addEventListener("load",function(){
+               init();
+          });
+     </script>
+
+</head>
+<body>
+     <div id="wrapper"></div>
+     <button onClick="move()">수동움직임</button>
+     <button>자동움직임</button>
+</body>
+</html>

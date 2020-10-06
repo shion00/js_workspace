@@ -1,0 +1,45 @@
+
+<!-- 자바스크립트 배열은 클래스인가요?? 네, 
+
+     문제   12
+배열의 첫번째 공간부터 10번째 공간까지는 0을 대입하고, 11번째부터 20번째 까지는 1을 대입하여
+출력하세요.
+-->
+
+
+<script>
+/*
+//자풀
+
+     var arr=new Array();
+     for(var i=0;i<=9;i++){
+          arr[i]=0;
+          document.write(arr[i]);
+
+     }
+
+     for(var i=0;i<=9;i++){
+          arr[i]=1;
+          document.write(arr[i]);
+
+     }
+*/     
+// 해결
+
+var arr=new Array(20); //메모리에 빈공간을 20개 만들도, 이공간들을 순서있게 나열시켜라..
+
+for(var i=0;i<arr.length;i++){
+     if(i<arr.length/2){
+          arr[i]=0;
+     }else{
+          arr[i]=1;
+     }
+
+     document.write(arr[i]);
+     
+}
+
+//document.write(arr); //배열의 모습을 보여준다.
+
+ 
+</script>

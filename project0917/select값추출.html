@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<style>
+     .wrapper{
+          width:400px;
+          height:400px;
+          border:5px solid #dfeecc;
+          margin:auto;
+     }
+     select{
+          width:100%;
+          height:40px;
+          background:dodgerblue;
+          color:white;
+          font-size:30px;
+
+     }
+     #content{
+          width: :100%;
+          height: 360px;
+          background-color:black;
+     }
+</style>
+<script>
+     function setColor(){
+          //문서내의 select 박스에 현재 선택된 값을 추출해보자!!
+          var sel=document.getElementById("sel");
+          //console.log("당신이선택한 옵션의 값은", sel.value); //오셥사이에 있는 텍스트는 디자인이다
+          
+          //문서내의 content 영역에 추출한 값을 이용하여 배경색상을 부여하자!!
+          var content=document.getElementById("content");
+          content.style.background=sel.value;
+     }
+     //이번엔 this 를 이용해보자!
+     function setColor2(c){
+          var content=document.getElementById("content");
+          content.style.backgroundColor=c;
+     }
+</script>
+<!-- var content = document.getElementById("content");
+를 전역으로 올리면 setColor 함수가 작동이 안되는데 .. 왜그런지 한번만 더 설명해주실 수 있을까요?
+ : content가 태어난 시점이 뒤기 때문에 타이밍이 맞지 않기 때문이다. 
+ 해결책) function init(), 과 body onLoad 를 이용
+
+ var sel=document.getElementById("sel");
+ var content=document.getElementById("content");
+이거를 빼고 실행가능
+답: id일 경우 허용한것일 뿐이다. 활용하는건 안좋다, fm대로 개발하자!
+
+-->
+<body>
+     <div class="wrapper">
+          <select id="sel" onChange="setColor2(this.value)">
+               <option value="red">red</option>
+               <option value="orange">orange</option>
+               <option value="yellow">yellow</option>
+               <option value="green">green</option>
+               <option value="blue">blue</option>
+               <option value="navy">navy</option>
+               <option value="purple">purple</option>
+          </select>
+          <div id="content"></div>
+     </div> 
+</body>
+</html>
+

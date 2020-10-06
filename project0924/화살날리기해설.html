@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script>
+          /*화살 하나를 생성하여 날려보자*/ 
+          var arrow;
+          var stepX=10; //몇픽셀씩 움직일지 결정하는 변수
+
+          //화살 생성
+          function createArrow(){
+               arrow=document.createElement("span");//<span></span>
+               arrow.innerText="→";//<span>→</span>
+               arrow.style.position="absolute";
+               arrow.style.left=50+"px";
+               arrow.style.top=100+"px";
+               arrow.style.color="red";
+               arrow.style.fontSize="30px";
+               document.body.appendChild(arrow);
+          }
+
+          //화살 동작을 처리할 함수
+          function move(){
+               arrow.style.left=parseInt(arrow.style.left)+stepX+"px";
+          }
+
+          function init(){
+               createArrow();
+               setInterval("move()",10);
+          }
+
+          window.addEventListener("load",function(){
+               init();
+          });
+     </script>
+</head>
+<body>
+     
+</body>
+</html>

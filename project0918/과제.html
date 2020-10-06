@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #redBall{
+               width:50px;
+               height: 50px;
+               background-color: red;
+               border-radius: 50%;
+          }
+     </style>
+     <script>
+          var div;
+
+          function init(){
+               div=document.getElementById("redBall");
+               div.style.position="absolute";
+               div.style.left="200px";
+               div.style.top="300px";
+               console.log("", input.value);
+
+
+          }
+
+
+         function moveBall(){
+               div.style.left=div.style.left-a*
+          }
+
+     </script>
+</head>
+<body onLoad="init()">
+     <input  type="text" placeholder="이동할 x좌표 숫자입력"/>
+     <input  type="text" placeholder="이동할 y좌표 숫자입력"/>
+     <button onClick="moveBall()">실행</button>
+
+     <div id="redBall"></div>
+     
+</body>
+</html>

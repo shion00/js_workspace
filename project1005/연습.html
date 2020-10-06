@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          body{
+               margin: 0px;
+          }
+     </style>
+     <script>
+          var wrapper;
+          var bgY=0;
+
+          function createHero(){
+               
+          }
+
+          function bg(){
+               wrapper=document.getElementById("wrapper");
+               wrapper.style.width="100%";
+               wrapper.style.height=700+"px";
+               wrapper.style.backgroundImage="url(../images/shooting/bg.png)";
+               wrapper.style.position="relative";
+               wrapper.style.overflow="hidden";
+               document.body.appendChild(wrapper);
+          }
+          
+          function tick(){
+               bgY++;
+          }
+
+          function render(){
+               wrapper.style.backgroundPosition="0px "+bgY+"px";
+          }
+
+          function gameLoop(){
+               tick();
+               render();
+          }
+
+          
+          window.addEventListener("load",function(){
+               bg();
+               setInterval("gameLoop()",1);
+
+          });
+     </script>
+</head>
+<body>
+     <div id="wrapper"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #wrapper{
+               width: 1000px;
+               height: 700px;
+               margin: auto;
+               background-image: url(https://s3.envato.com/files/235865275/game-bg-03.jpg);
+               background-size: 100% 600px;
+               position: relative;
+          }
+     </style>
+     <script src="./map.js"></script>
+     <script>
+          /*게임제작시 복잡한 맵을 구현하는 노하우 배워보자!*/
+          var wrapper;
+
+          //블락을 생성한다.
+          function createBlock(){
+
+               for(var i=0;i<map.length;i++){
+                    for(var a=0;a<map[i].length;a++){
+                         //한개를 먼저 생성해보자!
+                         var block=document.createElement("img");
+                         block.src="../images/brick.png";
+                         block.style.width=20+"px";
+                         block.style.height=20+"px";
+                         block.style.position="absolute";
+                         block.style.left=(a*20)+"px";//안쪽 배열, 즉 안쪽 포문이 결정한다.
+                         block.style.top=(i*20)+"px";//바깥쪽 배열, 즉 바깥쪽 포문이 결정한다.
+
+                         if(map[i][a]==1){//무조건 붙이지 말고, 1일때만...
+                              wrapper.appendChild(block); 
+                         }
+                    }
+               }
+               
+          }
+          function init(){
+               wrapper=document.getElementById("wrapper");
+          }
+          window.addEventListener("load", function(){
+               init();
+               createBlock();
+          });
+     </script>
+</head>
+<body>
+     <div id="wrapper"></div>
+</body>
+</html>

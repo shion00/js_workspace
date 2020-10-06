@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script src="../js/lib.js"></script>
+     <script>
+          
+          var arr=new Array();
+          arr[0]="김치찌개";
+          arr[1]="된장찌개";
+          arr[2]="부대찌개";
+          arr[3]="순두부찌개";
+          arr[4]="파스타";
+          arr[5]="라면";
+          arr[6]="순대국";
+          arr[7]="육개장";
+          arr[8]="피자";
+          arr[9]="치킨";
+          arr[10]="햄버거";
+          arr[11]="돈까스";
+
+          window.addEventListener("load",function(){
+               init();
+          });
+
+          function init(){
+               bt=document.getElementById("bt");
+               h1=document.getElementById("h1");
+
+               h1.innerText="점심메뉴는 두그두그긍~";
+          }
+
+          function menu(){
+               var r=getRandom(arr.length-1);
+               h1.innerText="짜잔~!! "+arr[r]+" 입니다";
+          }
+
+     </script>
+</head>
+<body>
+     <button onClick="menu()" id="bt">점심메뉴 보여주기</button>
+     <h1 id="h1"></h1>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script>
+
+          var days=["일요일","월요일","화요일","수요일","목요일","금요일","토요일",];
+
+          function showTime(){
+               /*Date 내장객체 학습*/ 
+               var d1=new Date(); //객체이기때문에 생성자 호출을 위해 new 쓴다, 날짜 객체의 인스턴스 1개 생성!
+               //개발자가 인스턴스만 생성한 경우, 현재 날짜 정보를 보유하게 됨
+               console.log(d1);//객체는 문자열은 아니지만, 출력명령을 만나면 자동으로 문자화 된다.
+
+               //날짜 객체자체는 우리가 원하는 형식(포맷)은 아니므로,
+               //친근한 형식으로 출력하려면, 날짜 객체가 보유한 각종 메서드를 이용하면 된다.
+               //개발 언어가 보유한 객체나 함수 등에 대한 참조문서를 가리켜 API Document 라 한다.
+               //API Application Programming Interface(프로그래밍 조작법, 사용법)
+               //년도 추출
+               var yy=d1.getFullYear();
+               console.log("현재 연도는 %d",yy);
+
+               var mm=d1.getMonth();//주의! 월은 0 부터 시작한다!
+               console.log("이번달은 %d월 입니다.",mm+1); //따라서 디자인을 표현할때는 +1을 해주자!
+
+               var dd=d1.getDate();//날짜 1~31 까지
+               console.log("오늘은 %d일 입니다.", dd);
+
+               var day=d1.getDay(); // 주의! 요일  0부터 시작함, 0은 일요일임.
+               console.log("오늘은 %d 요일 입니다.", days[day]); //%d 에는 숫자만 올 수 있음
+
+               //100일뒤엔 몇일일까?
+               //현재 날짜 객체를 원하는 날짜로 조작해야함!
+               d1.setDate(d1.getDate()+100);//100일로 조작
+               console.log("그날은 ", d1.getDate(),"이며", "요일은 ",days[d1.getDay()]);
+               //날짜 객체는 getXXX() 형 메서드를 이용하여 정보를 가져올 수 있고,
+               //                 setXXX() 형 메서드를 이용하여 정보를 조작할 수 있다.
+
+
+          }
+          showTime();
+
+          //setInterval("showTime()",1000);
+
+     </script>
+</head>
+<body>
+     
+</body>
+</html>

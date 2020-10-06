@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>이차원 배열을 이용한 사원정보</title>
+     <style>
+          .wrapper{
+               width: 1000px;
+               height: 700px;
+               background: yellow;
+               margin: auto;
+               overflow: hidden;
+          }
+          .regist-form{
+               width: 200px;
+               height: 100%;
+               background: #cccccc;
+               float: left;
+               text-align: center;
+          }
+          .regist-form input,button,select{
+               width: 90%;
+               height: 35px;
+               font-size:20px;
+               margin-bottom: 2px;
+          }
+          .content{
+               width: 800px;
+               height: 100%;
+               background: lightcoral;
+               float: left;
+               overflow: scroll;
+          }
+          select{
+               background-color: dodgerblue;
+               color: white;
+               font-weight: bold;
+          }
+     </style>
+     <script>
+          var empno,ename,job,mgr,hiredate,sal,comm,deptno;//쉼표를 이용 한줄로 선언할 수 있다.
+          var content; //표를 출력할 div
+
+          //emp 테이블을 구성하는 사원 한명에 대한 정보를 등록한다.
+          //사원 1명은 1차원배열에 대응된다!!
+          var emp=new Array();//사원정보를 누적시킬 배열
+                                          //사원정보를 담는 1차원 member 배열을 담을 예정)
+                                          // js에서는 배열의 크기를 명시하지 않아도 됨
+
+          function createDump(){
+               emp=[
+                    [7369, "SMITH", "CLERK",7902,"80/12/17",800,"NULL",20],
+                    [7499, "ALLEN","SALESMAN",7698,"81/02/20",1600,300,30],
+                    [7521, "WARD","SALESMAN",7698,"81/02/22",1250,500,30],
+                    [7566, "JONES","MANAGER",7839,"81/04/02",2975,"NULL",20],
+                    [7654, "MARTIN","SALESMAN",7698,"81/09/28",1250,1400,30],
+                    [7698, "BLAKE","MANAGER",7839,"81/05/01",2850,"NULL",30],
+                    [7782, "CLARK" ,"MANAGER",7839,"81/06/09",2450,"NULL",10],
+                    [7788, "SCOTT","ANALYST",7566,"87/04/19",3000,"NULL",20],
+                    [7839, "KING","PRESIDENT","NULL","81/11/17",5000,"NULL",10],
+                    [7844, "TURNER","SALESMAN",7698,"81/09/08",1500,0,30],
+                    [7876, "ADAMS","CLERK",7788,"87/05/23",1100,"NULL",20],
+                    [7900, "JAMES","CLERK",7698,"81/12/03",950,"NULL",30],
+                    [7902, "FORD","ANALYST",7566,"81/12/03",3000,"NULL",20],
+                    [7934, "MILLER","CLERK",7782,"82/01/23",1300,"NULL",10]
+               ];
+          }
+
+          function regist(){
+               var member=new Array(8);
+               member[0]=empno.value; //EMPNO
+               member[1]=ename.value; //ENAME
+               member[2]=job.value; //JOB
+               member[3]=mgr.value; //MGR
+               member[4]=hiredate.value; //HIREDATE
+               member[5]=sal.value; //SAL
+               member[6]=comm.value; //COMM
+               member[7]=deptno.value; //DEPTNO
+
+               //생성된 member 배열을 emp에 추가하자~~
+               emp.push(member);
+
+               getList();//테이블 출력!!
+               
+          }
+          
+          //현재까지 emp에 누적된 사원정보를 출력하는 함수
+          function getList(){
+               var str="";
+               str+="<table border='1px' width='100%'>";
+               //층수는 emp 배열의 크기와 관련됨..
+               //사원번호, 사원명, 급여, 입사일, 부서번호만 출력 하자
+
+               for(var i=0;i<emp.length;i++){
+                    str+="<tr>";
+                    for(var a=0;a<emp[i].length;a++){
+                         str+="<td>"+emp[i][a]+"</td>";
+                    }
+                    str+="</tr>";
+               }
+                str+="</table>";
+
+               content.innerHTML=str; //테이블 태그를 사용하기 위해 html 사용함
+              
+          }
+          
+
+          function init(){
+               empno=document.getElementById("empno");
+               ename=document.getElementById("ename");
+               job=document.getElementById("job");
+               mgr=document.getElementById("mgr");
+               hiredate=document.getElementById("hiredate");
+               sal=document.getElementById("sal");
+               comm=document.getElementById("comm");
+               deptno=document.getElementById("deptno");
+               content=document.querySelector(".content"); //.(마침표)붙음, 클래스이기때문?!
+          }
+
+          window.addEventListener("load",function(){
+               init();
+               createDump();
+               getList();
+          });
+     </script>
+</head>
+<body>
+     <div class="wrapper">
+          <div class="regist-form">
+               <!-- form 중요함! 전송범위를 설정할 수 있는 전용태그이다. -->
+               <!-- onSubmit이란? 전송이벤트 발생을 처리하는 이벤트핸들러 -->
+               <!-- preventDefault() 함수에 의해 버튼에 설정된 무조건 전송 기능을 
+                      비활성화 시킴
+                      event.preventDefault()  
+               -->
+               <form onSubmit="event.preventDefault()">
+                    <input id="empno" type="text" placeholder="EMPNO"/>
+                    <input id="ename" type="text" placeholder="ENAME"/>
+                    <select id="job">
+                         <option value="0">담당업무</option>
+                         <option value="CLERK">CLERK</option>
+                         <option value="SALESMAN">SALESMAN</option>
+                         <option value="MANAGER">MANAGER</option>
+                         <option value="ANALYST">ANALYST</option>
+                         <option value="PRESIDENT">PRESIDENT</option>
+                    </select>
+                    <input id="mgr"type="text" placeholder="MGR"/>
+                    <input id="hiredate" type="text" placeholder="HIREDATE"/>
+                    <input id="sal" type="text" placeholder="SAL"/>
+                    <input id="comm" type="text" placeholder="COMM"/>
+                    <select id="deptno">
+                         <option value="0">부서번호</option>
+                         <option value="10">10번 부서</option>
+                         <option value="20">20번 부서</option>
+                         <option value="30">30번 부서</option>
+                         <option value="40">40번 부서</option>
+                    </select>
+                    <button onClick="regist()">사원등록</button>
+                    <!-- button이 form 안에 있으면 무조건 전송을 일으킨다. 
+                           html5의 button부터 이 기능이 추가되었다.
+                           개발자가 전송 주소를 명시하지 않으면, 현재 페이지로 전송
+                           하므로, 새로고침이  일어난다.
+                           해결책)  form에 onSubmit 씀  -->
+               </form>
+          </div>
+          <div class="content"></div>
+     </div>
+</body>
+</html>

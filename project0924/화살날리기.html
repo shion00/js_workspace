@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #wrapper{
+               width: 200px;
+               height: 200px;
+          }
+          #ar1{
+               font-size: 20px;
+               font-weight: bold;
+               color: blueviolet;
+
+          }
+          #ar2{
+               font-weight: bold;
+               font-size: 20px;
+               color: blue;
+          }
+          #ar3{
+               font-weight: bold;
+               font-size: 20px;
+               color: red;
+          }
+     </style>
+     <script>
+          var ar1;
+          var ar2;
+          var ar3;
+          var stepX=500;
+
+          function move(){
+               ar1.style.left=parseInt(ar1.style.left)+stepX+"px";
+          }
+          
+          function init(){
+               ar1=document.getElementById("ar1");
+               ar2=document.getElementById("ar2");
+               ar3=document.getElementById("ar3");
+             //  ar1.style.position="absolute";
+          }
+
+          window.addEventListener("load", function(){
+               init();
+               move();
+               //setInterval("move()",50);
+          });
+     </script>
+</head>
+<body>
+          <div id="ar1">→</div>
+          <div id="ar2">→</div>
+          <div id="ar3">→</div>
+</body>
+</html>

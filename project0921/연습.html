@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #wrapper{
+               width: 500px;
+               height: 450px;
+               background: yellow;
+               margin: auto;
+          }
+          #mask{
+               width: 500px;
+               height: 400px;
+               overflow: hidden;  
+          }
+          #box{
+               width:3500px;
+               height: 400px;
+               background: tomato;
+          }
+          #navi{
+               text-align: center;
+          }
+          a{
+               text-decoration: none;
+          }
+     </style>
+     <script>
+          var box;
+          let a=0.1;
+          var targetX=0;
+
+          window.addEventListener("load",function(){
+               init();
+               setInterval("move()",100);
+          });
+          
+          function init(){
+
+               box=document.getElementById("box");
+               box.style.position="relative";
+               box.style.left=0+"xp";
+               
+               for(var i=1;i<=5;i++){
+
+                    var img=document.createElement("img");
+                    img.src="../images/travel/"+i+".jpg"; 
+                    img.style.width=500+"px";
+                    img.style.height=400+"px";
+
+                    box.appendChild(img);
+               }
+
+
+          }
+
+          function setTarget(x){
+              targetX=x;
+          }
+
+          function move(){
+               box.style.left=parseFloat(box.style.left)+a*(targetX-parseFloat(box.style.left))+"px";
+
+          }
+
+     </script>
+</head>
+<body>
+     <div id="wrapper">
+          <div id="mask">
+               <div id="box"></div>
+          </div>
+          <div id="navi">
+               <a href="javascript:setTarget(0)">●</a>
+               <a href="javascript:setTarget(-500)">●</a>
+               <a href="javascript:setTarget(-1000">●</a>
+               <a href="javascript:setTarget(-1500)">●</a>
+               <a href="javascript:setTarget(-2000)">●</a>
+          </div>
+     </div>
+</body>
+</html>

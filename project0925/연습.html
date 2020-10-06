@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          .wrapper{
+               width: 1200px;
+               height: 700px;
+               background: yellow;
+               margin: auto;
+               overflow: hidden; 
+          }
+          .dash{
+               width: 200px;
+               height: 100%;
+               background: tomato;
+               float: left;
+          }
+          #stage{
+               width: 1000px;
+               height: 100%;
+               background: dodgerblue;
+               float: left;
+               position: relative;
+          }
+          #stage span{
+               color:white;
+               font-weight: bold;
+               font-size: 16px;
+          }
+     </style>
+     <script>
+          var stage;
+          var level=0;
+          
+          var word=[
+                         ["쌀","과자","보리","곡식","마늘","감자","우유","사람","동물","과자"],
+                         ["열정","집념","성공","노력","결심","각오","집중","성실","태도","근면"],
+                         ["소나기","하늘","구름","바다","땅","지하","인간","우주","괴물","우주선"],
+                         ["바보","천재","대왕","카이사르","시저","알렉산더","가토","이순신","세종대왕","포에니"],
+                         ["포네프","로마","중국","네덜란드","행운","승리","영광","끈기","결실","자아"]
+          ];
+
+           
+
+
+
+          function init(){
+               dash=document.getElementById("dash");
+               stage=document.getElementById("stage");
+
+               
+
+                    for(var a=0;a<word[level].length;a++){
+                         var span=document.createElement("span");
+                         span.innerHTML=word[level][a];
+                         stage.appendChild(span);
+                    }
+                    
+
+               
+          }
+
+          window.addEventListener("load",function(){
+               init();
+          })
+
+     </script>
+</head>
+<body>
+     <div class="wrapper">
+          <div class="dash">
+               <button>START</button>
+          </div>
+          <div id="stage"></div>
+          
+     </div>
+</body>
+</html>

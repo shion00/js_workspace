@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          .wrapper{
+               width: 500px;
+               height: 1000px;
+               margin: auto;
+               background: yellow;
+          }
+          div{
+               width: 100%;
+               height: 200px;
+               border:1px solid turquoise;
+               box-sizing: border-box;
+               text-align: center;
+               font-size: 50px;
+
+          }
+          div input{
+               width: 100%;
+               height: 100%;
+               font-size: 50px;
+               text-align: center;
+               
+               
+          }
+     </style>
+     <script src="./data.js"></script>
+     <script>
+          var na;
+          var hint;
+          var txt;
+          var img;
+          var n=0;
+          var recode;
+          var score=0;
+
+          function printImg(){
+               img=document.createElement("img");
+               img.src="../images/nation/1.png";
+               img.style.width=500+"px"
+               img.style.height=200+"px"
+
+               na.appendChild(img);
+
+               
+          }
+          function printHint(){
+               hint.innerText=data[0][1]
+          }
+
+          function printScore(){
+               recode.innerText=score+"점";
+          }
+          
+          
+          
+          function init(){
+               na=document.getElementById("na");
+               hint=document.getElementById("hint");
+               txt=document.getElementById("txt");
+               recode=document.getElementById("recode");
+               feedback=document.getElementById("feedback");
+               txt.focus();
+               
+               printImg();
+               printScore();
+               printHint();
+               
+               txt.addEventListener("keyup",function(){
+                    
+     
+                    if(event.keyCode==13){
+                         
+                         
+                         if(txt.value==data[n][2]){
+                              n++;
+                              img.src=data[n][0];
+                              img.style.width=500+"px"
+                              img.style.height=200+"px"
+                              na.appendChild(img);
+                              hint.innerText=data[n][1]
+                              feedback.innerText="정답"
+                              score+=10;
+                              printScore();
+                                   
+                         }else{
+                              feedback.innerText="오답"
+                              score+=-10;
+                              printScore();
+
+                         }
+                         txt.value="";
+
+                         if(n>=data.length){
+                              alert("게임종료");
+                              hint.innerText="Game Over";
+                         }
+
+                    }
+               });
+          }
+          window.addEventListener("load",function(){
+               init();
+          });
+     </script>
+</head>
+<body>
+     <div class="wrapper">
+          <div id="na"></div>
+          <div id="hint"></div>
+          <div>
+               <input id="txt" type="text" placeholder="국가를 입력하시오"/>
+          </div>
+          <div id="feedback"></div>
+          <div id="recode"></div>
+     </div>
+</body>
+</html>
