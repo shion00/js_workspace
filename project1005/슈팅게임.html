@@ -48,6 +48,7 @@
 
           // 주인공 등장
           function createHero(){
+               //(x,y,width,height,velX,velY)
                //screen.width
                hero=new Hero((screen.width/2)-40, 550, 80, 65,0,0);
           }
@@ -154,7 +155,7 @@
                });
 
 
-               //bgSund();
+               bgSund();
                createHero();
                createEnemy();
                setInterval("gameLoop()",1);

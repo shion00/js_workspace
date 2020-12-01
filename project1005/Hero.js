@@ -23,7 +23,6 @@ class Hero{
           this.img.style.position="absolute";
           this.img.style.left=this.x+"px";
           this.img.style.top=this.y+"px";
-
           this.img.style.width=this.width+"px";
           this.img.style.height=this.height+"px";
 

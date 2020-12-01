@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          /*스타일 시트에서, 스타일의 적용 될 주체를 가르켜 선택자(selector) 라 한다.*/ 
+         #box1{}/*#box1을  선택자라 부른다. */
+     </style>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script>
+          //jquery 는 개발자가 직접 작성했어야할 자바스크립트 코드를 아주 아주
+          //단순화시켜놓은 라이브러리이다. 따라서 우리가 기존에 작성했던 코드량에
+          //비해 상당히 규모가 단축 된다.
+          document.getElementById("box1");
+
+          //자바스크립트 작성시
+          window.addEventListener("load",function(){
+               
+               /*순수한 js 코드로 작성시
+               var box1=document.getElementById("box1");
+               box1.style.background="red";
+               box1.style.width=100+"px";
+               box1.style.height=100+"px";
+               */
+               
+          });     
+
+          //JQuery 로 작성시 
+          //load되면이라는 뜻..addEventListener("load",function)의 단축형
+          $(document).ready(function(){//$ 는 제이쿼리라는 뜻, JQuery와 자바스크립트 섞어 쓸 수 있다.
+               //alert("로드했어");
+
+              /*
+              JQuery 는 CSS의 선택자(셀렉터) 규칙을 따른다, 따라서 CSS에서 사용했던
+              #id, .클래스, 태그, 등등이 모두 적용된다.
+              따라서 자바스크립트 처럼 var box1=document.getElementById("box1"); 을 쓰지 않고
+                                                #box1 만 쓰면 된다.
+
+              JQuery 로 작성시
+              $("#box1").css("background","blue");//자바스크립트는 style, JQuery는 css()
+              $("#box1").css("width","100px");
+              $("#box1").css("height","100px");
+              */ 
+
+               //JQuery 로 작성시
+               $("#box1").css({//JSON
+                    "background":"green",
+                    "width":"100px",
+                    "height":"100px"
+               }).css("border","5px solid red").css().css();//chaining 이라함, 굳이 chaining 할필요없이 JSON 쓰면됨.
+
+          });
+
+     </script>
+</head>
+<body>
+     <div id="box1"></div>
+</body>
+</html>

@@ -4,17 +4,40 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
+     <script src="연습hero.js"></script>
+     <script src="연습Bullet.js"></script>
+     <script src="연습.enemy.js"></script>
      <style>
-          body{
-               margin: 0px;
-          }
+          body{margin:0px;}
      </style>
      <script>
           var wrapper;
           var bgY=0;
+          var hero;
+          var bulletArray=new Array();
+          var enemyArray=new Array();
+          var enemyImg=["e1","e2","e3","e4","e5"];
+
+          function createEnemy(){
+               //(src,width,height,x,y,velX,velY,container)
+               for(var a=0;a<5; a++){
+                    for(var i=0;i<20;i++){
+                         var enemy=new Enemy("../images/shooting/"+enemyImg[a]+".png",30,30,100*i,30,0,0.1,wrapper);
+                         enemyArray.push(enemy);
+                    }
+
+               }
+          }
+
+          function createBullet(){
+               //(src,width,height,x,y,container,velX,velY)
+               var bullet=new Bullet("../images/shooting/ball.png",20,20,hero.x+(hero.width/2)-10,hero.y-10,wrapper,0,-2);
+               bulletArray.push(bullet);
+          }
 
           function createHero(){
-               
+               //(src,x,y,width,height,velX,velY)
+               hero=new Hero("../images/shooting/hero.png",(screen.width/2)-25,(screen.height/2)+50,50,50,0,0);
           }
 
           function bg(){
@@ -38,11 +61,49 @@
           function gameLoop(){
                tick();
                render();
+               hero.tick();
+               hero.render();
+
+               for(var i=0;i<bulletArray.length;i++){
+                    bulletArray[i].tick();
+                    bulletArray[i].render();
+               }
+               for(var i=0;i<enemyArray.length;i++){
+                    enemyArray[i].tick();
+                    enemyArray[i].render();
+               }
+
           }
 
           
           window.addEventListener("load",function(){
                bg();
+               createHero();
+               createEnemy();
+
+               document.body.addEventListener("keydown",function(e){
+                    var key=e.keyCode;
+                    //console.log(e.keyCode);
+                    switch(key){
+                         case 37:hero.velX=-5;break;
+                         case 38:hero.velY=-5;break;
+                         case 39:hero.velX=5;break;
+                         case 40:hero.velY=5;break;
+                         case 32:createBullet();break;
+                    }
+               });
+
+               document.body.addEventListener("keyup",function(e){
+                    var key=e.keyCode;
+                    switch(key){
+                         case 37:hero.velX=0;break;
+                         case 38:hero.velY=0;break;
+                         case 39:hero.velX=0;break;
+                         case 40:hero.velY=0;break;
+                    }
+               });
+
+
                setInterval("gameLoop()",1);
 
           });

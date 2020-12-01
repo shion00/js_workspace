@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">html의 아바타 객체는 document
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script>
+          /*자바스크립트 영역; 지적존재 프로그램*/ 
+          document.getElementById("wrapper");//태그 접근? 객체 접근? : 객체에 접근한것이다.
+                                                                  //html은 문서로 프로그래밍 언어가 아니기 떄문에 
+                                                                  //자바스크립트와 불가능, 통신이 안됨
+                                                                  //어떻게 자바스크립트에서 html를 제어할 수 있을까?
+                                                                  //실행부가 태그를 만나면 그 아바타를 객체로 메모리에 올린다.
+                                                                  //자바스크립트가 메모리에 올라온 아바타 객체를 통해서 html를 제어한다. 
+                                                                  //많은 아바타 객체 중 특정 객체를 가리키기 위해 태그에 id를 부여하고
+                                                                  //자바스크립트는 그 id 를 통해 지적한다.
+          var txt=document.getElementById("txt"); 
+          txt.변수.함수 //객체이기 때문에 변수(속성), 함수(메서드) 있음
+                            //따라서 API 통해서 암기할 필요없이 검색하여 속성, 메서드 사용법을 알 수 있다. 
+     </script>
+</head>
+<body onLoad="문서내의 모든 태그가 DOM화 되면"> 아바타 같은 body 객체(=DOM)를 메모리에 올린다. Document Object Model
+     <!-- script 이외의 나머지는 html 영역 -->
+     <div id="wrapper"></div>
+     <span></span>
+     <input type="text" id="txt">
+     <input type="button"> 
+     <input type="checkbox">
+     <select></select>
+</body>
+</html>

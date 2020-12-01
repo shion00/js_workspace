@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #wrapper{
+               width: 500px;
+               height: 500px;
+               margin: auto;
+               text-align: center;
+          }
+          #content{
+               width: 100%;
+               height: 400px;
+          }
+          #footer{
+               width: 100%;
+               height: 100px;
+               overflow: hidden;
+          }
+          #bt1{
+               float: left;
+          }
+          #bt2{
+               float: right;
+          }
+
+     </style>
+     <script>
+          var i=1;
+
+          function prev(){
+               i--;
+               document.getElementById("tra").src="../images/travel/"+i+".jpg";
+          }
+          function next(){
+               i++;
+               document.getElementById("tra").src="../images/travel/"+i+".jpg";
+          }
+     </script>
+</head>
+<body>
+          <div id="wrapper">
+               <div id="content">
+                    <img src="../images/travel/1.jpg" id="tra" width="100%" height="100%"/>
+               </div>
+               <div id="footer">
+                    <button id="bt1" onClick="prev()">◀</button>
+                    <button id="bt2" onClick="next()">▶</button>
+               </div>
+          </div>
+        
+</body>
+</html>

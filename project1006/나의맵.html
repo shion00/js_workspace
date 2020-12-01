@@ -1,59 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <style>
-          #myMap{
-               width: 1000px;
-               height: 800px;
-               background: yellow;
-               margin: auto;
-          }
-     </style>
-     <script>
-          var myMap;//div
+<style>
+     #myMap{
+          width: 1000px;
+          height: 800px;
+          background: yellow;
+          margin: auto;
+     }
+</style>
+<script>
+     var myMap;//div
 
-          function init(){
-               myMap=document.getElementById("myMap");
-               var pos=new google.maps.LatLng(37.501963, 127.032692);//LatLng(위도, 경도)
+     function init(){
+          myMap=document.getElementById("myMap");
+          var pos=new google.maps.LatLng(37.501963, 127.032692);//LatLng(위도, 경도)
 
-               var mapProp={
-                    center:pos,
-                    zoom:17
-               };
+          var mapProp={
+               center:pos,
+               zoom:17
+          };
 
+          //구글맵 객체 생성
+          var map=new google.maps.Map(myMap,mapProp);//Map(그려질div,옵션);
 
-               //구글맵 객체 생성
-               var map=new google.maps.Map(myMap,mapProp);//Map(그려질div,옵션);
+          //마커생성
+          var marker=new google.maps.Marker({
+               position:pos,
+               animation:google.maps.Animation.BOUNCE,
+               icon:{
+                    url:"../images/shooting/e1.png",
+                    scaledSize:new google.maps.Size(45,45)
+               }
+          });
+          marker.setMap(map);//마커를 적용할 맵 객체
 
-               //마커생성
-               var marker=new google.maps.Marker({
-                    position:pos,
-                    animation:google.maps.Animation.BOUNCE,
-                    icon:{
-                         url:"../images/shooting/e1.png",
-                         scaledSize:new google.maps.Size(45,45)
-                    }
+          //마커에 클릭이벤트 부여하기
+          google.maps.event.addListener(marker,"click",function(){
+               //alert("여기가 궁금해");
+               map.setZoom(20);
+
+               //정보창 띄우기
+               var pop=new google.maps.InfoWindow({
+                    content:"여기가 역삼 맛집이에요"
                });
-               marker.setMap(map);//마커를 적용할 맵 객체
-
-               //마커에 클릭이벤트 부여하기
-               google.maps.event.addListener(marker,"click",function(){
-                    //alert("여기가 궁금해");
-                    map.setZoom(20);
-
-                    //정보창 띄우기
-                    var pop=new google.maps.InfoWindow({
-                         content:"여기가 역삼 맛집이에요"
-                    });
-                    pop.open(map,marker);
-               });
+               pop.open(map,marker);
+          });
 
 
-          }
-     </script>
+     }
+</script>
 </head>
 <body>
      <div id="myMap">구글 지도 나올 예정</div>

@@ -1,0 +1,96 @@
+
+
+     var json={
+          이름:"철수",
+          나이:27,
+          언어:"java","python","c","swift",
+          결혼유무:false
+
+     };
+
+     var animal1={
+          강아지이름:"뽀삐",
+           나이:8,
+          색상:"흰색"
+     };
+     var animal2={
+          고양이이름:"나비",
+           나이:7,
+          색상:"black"
+     };
+     var animal3={
+          뱀이름:"아나콘다",
+           나이:20,
+          색상:"회색"
+     };
+/*
+JSON : 자바스크립트 객체 표기법(JavaScript Object Notation)
+
+JSON은 프로그래밍 언어 X, 단지 표기법일 뿐이다!! 문자취급해야 한다.
+단지 자바스크립트에서는 저 표기법을 객체로 인식하는 것뿐이다.
+즉 다른 프로그래밍 언어에서는 JSON은 단지 문자열일 뿐이다. 
+자바스크립트가 아래의 JSON 표기법 문자열을 인식하여, 객체로 변환하는 것 뿐이다.
+
+*/ 
+
+{
+     name:"철수", 
+     age:27,
+     language:["java","python","c","swift"],
+     isMarried:false,
+     pets:[
+          {
+               type:"dog",
+               name:"뽀삐",
+               age:8,
+               color:"흰색"
+           },
+           {
+               type:"cat",
+               name:"나비",
+               age:7,
+               color:"검정"
+
+           },
+           {
+
+               type:"snake",
+               name:"아나콘다",
+               age:20,
+               color:"흰색"
+           }
+     ]
+}
+
+// 자바스크립트가 아닌 다른 언어에서는 변수에 ""(쌍따움표)로 감싸주어야 한다.
+{
+     "name":"철수", 
+     "age":27,
+     "language":["java","python","c","swift"],
+     "isMarried":false,
+     "pets":[
+          {
+               "type":"dog",
+               "name":"뽀삐",
+               "age":8,
+               "color":"흰색"
+           },
+           {
+               "type":"cat",
+               "name":"나비",
+               "age":7,
+               "color":"검정"
+
+           },
+           {
+
+               "type":"snake",
+               "name":"아나콘다",
+               "age":20,
+               "color":"흰색"
+           }
+     ]
+}
+
+
+
